@@ -63,6 +63,11 @@ flutter:
     - assets/group.png
     - assets/groupone.png
     - assets/grouptwo.png
+    - assets/card.png
+    - assets/logo.png
+    - assets/citi.png
+    - assets/baroda.png
+    - assets/sbi.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
