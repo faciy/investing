@@ -68,6 +68,17 @@ flutter:
     - assets/citi.png
     - assets/baroda.png
     - assets/sbi.png
+    - assets/mutual.png
+    - assets/monthly.png
+    - assets/unit.png
+    - assets/senior.png
+    - assets/ppf.png
+    - assets/gold.png
+    - assets/photo.png
+    - assets/icon.png
+    - assets/people.png
+    - assets/inotif.png
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

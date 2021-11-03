@@ -1,92 +1,84 @@
 import 'package:flutter/material.dart';
+import 'package:investing/components/app_header.dart';
+import 'package:investing/components/bank_header.dart';
+import 'package:investing/components/card_choice.dart';
+import 'package:investing/screens/body_quiz.dart';
+import 'package:investing/screens/login.dart';
+import 'package:investing/screens/profile.dart';
+import 'package:investing/screens/register.dart';
 
-class AppHome extends StatelessWidget {
+class AppHome extends StatefulWidget {
   const AppHome({Key? key}) : super(key: key);
+
+  @override
+  State<AppHome> createState() => _AppHomeState();
+}
+
+class _AppHomeState extends State<AppHome> {
+  int _currentIndex = 0;
+  final List _children = [
+    BodyQuiz(),
+    Center(child: Text('Slide Over')),
+    CardChoice(),
+    Profile()
+  ];
+
+  final List _childrens = [
+    AppHeader(),
+    BankHeader(),
+    BankHeader(),
+    BankHeader(),
+  ];
+
+  void onTabTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: PreferredSize(
-      // ignore: prefer_const_constructors
-      preferredSize: Size.fromHeight(200.0),
-      child: AppBar(
-        //   leading: Builder(
-        //     builder: (BuildContext context) {
-        //       return IconButton(
-        //         iconSize: 40,
-        //         icon: const Icon(Icons.notes),
-        //         onPressed: () {
-        //           Scaffold.of(context).openDrawer();
-        //         },
-        //       );
-        //     },
-        //   ),
-        //   title: Text('App name'),
-        //   actions: [
-        //     IconButton(
-        //       icon: const Icon(Icons.notifications),
-        //       iconSize: 40,
-        //       onPressed: () {
-        //         // handle the press
-        //       },
-        //     ),
-        //   ],
-        // backgroundColor: Color(0xff172774),
-        // shape: RoundedRectangleBorder(
-        //   borderRadius: BorderRadius.vertical(
-        //     bottom: Radius.circular(30),
-        //   ),
-        // ),
-        // )
-        automaticallyImplyLeading: false,
-        flexibleSpace: SingleChildScrollView(
-          child: Container(
-            // color: Color(0xff172774),
-            child: Column(
-              children: [
-                Row(
-                  // mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    SizedBox(
-                      // width: 15,
-                      height: 100,
-                    ),
-                    Icon(Icons.notes, color: Colors.white),
-                    SizedBox(width: 10),
-                    Text("App name",
-                        style: TextStyle(fontSize: 23, color: Colors.white)),
-                    SizedBox(width: 200),
-                    Icon(Icons.notifications, color: Colors.white),
-                  ],
-                ),
-                SizedBox(height: 100),
-                Container(
-                  // height: 40,
-
-                  // color: Colors.grey,
-                  margin: EdgeInsets.all(20),
-                  child: TextField(
-                    keyboardType: TextInputType.phone,
-                    cursorColor: Colors.greenAccent,
-                    decoration: InputDecoration(
-                        fillColor: Color(0xffEEEEEE),
-                        focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.black)),
-                        filled: true,
-                        prefixText: '+225 ',
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.black,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(10.0))),
-                  ),
-                ),
-              ],
-            ),
+      appBar: PreferredSize(
+        // ignore: prefer_const_constructors
+        preferredSize: Size.fromHeight(200.0),
+        child: _childrens[_currentIndex],
+      ),
+      body: _children[_currentIndex],
+      bottomNavigationBar: Container(
+        height: 80,
+        child: ClipRRect(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(30.0),
+            topRight: Radius.circular(30.0),
+          ),
+          child: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            backgroundColor: Color(0xFF172774),
+            selectedItemColor: Colors.white,
+            unselectedItemColor: Colors.white.withOpacity(.60),
+            selectedFontSize: 14,
+            onTap: onTabTapped, // new
+            currentIndex: _currentIndex,
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                title: Text('Home'),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.notes),
+                title: Text('Investing'),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.food_bank_rounded),
+                title: Text('Bank'),
+              ),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.person), title: Text('Profile'))
+            ],
           ),
         ),
       ),
-    ));
+    );
   }
 }
