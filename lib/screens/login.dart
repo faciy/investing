@@ -9,7 +9,7 @@ import 'package:investing/screens/verification.dart';
 
 class Login extends StatelessWidget {
   const Login({Key? key}) : super(key: key);
-
+  // ignore: prefer_typing_uninitialized_variables
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,7 +83,7 @@ class Login extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => Verification()),
+                              builder: (context) => Verification(title: 'fff')),
                         );
                       })
                 ],

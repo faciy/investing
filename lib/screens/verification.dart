@@ -4,8 +4,8 @@ import 'package:investing/components/header.dart';
 import 'package:investing/screens/register.dart';
 
 class Verification extends StatelessWidget {
-  const Verification({Key? key}) : super(key: key);
-
+  const Verification({Key? key, required this.title}) : super(key: key);
+  final title;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +27,7 @@ class Verification extends StatelessWidget {
               // ignore: prefer_const_constructors
               Center(
                 child: Text(
-                  'Verification code ',
+                  'Verification code $title',
                   style: TextStyle(fontSize: 25, fontWeight: FontWeight.w700),
                 ),
               ),
